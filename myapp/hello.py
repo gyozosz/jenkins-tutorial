@@ -8,5 +8,5 @@ def hello(name):
 
 if __name__ == "__main__":
     hello("James")
-    response = requests.request('GET', "https://en.wikipedia.org")
+    response = requests.request('GET', "https://en.wikipeda.org")
     assert_that(response.status_code, equal_to(200))
