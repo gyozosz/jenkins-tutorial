@@ -22,7 +22,7 @@ pipeline {
                 echo "Testing.."
                 sh '''
                 cd myapp
-                pytest
+                /home/jenkins/.local/bin/pytest
                 '''
             }
         }
