@@ -1,12 +1,18 @@
 import requests
 from hamcrest import assert_that, equal_to
+import pytest
 
 
 def hello(name):
-    print(f"Hello {name}!")
+    return f"Hello {name}!"
 
 
-if __name__ == "__main__":
-    hello("James")
+def test_hello():
+    name = "James"
+    hello_ret = hello(name)
+    assert_that(hello_ret, equal_to("Hello James!"))
+
+
+def test_request():
     response = requests.request('GET', "https://en.wikipedia.org")
     assert_that(response.status_code, equal_to(200))
