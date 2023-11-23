@@ -29,7 +29,7 @@ pipeline {
                     echo ${BANNER_TYPE}
 
                     if [ $BANNER_TYPE != '' -a $BANNER_TYPE != 'None' ]; then
-                        cat ./banners/banner.txt
+                        cat ${THEFILE}
                     fi
                     echo ${WELCOME_TEXT}
                 '''
