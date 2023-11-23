@@ -17,12 +17,12 @@ pipeline {
     stages {
         stage('Banner'){
             steps {
-                sh '''
+                sh(returnStdout: true, script: '''#!/bin/bash
                     if [ $BANNER_TYPE != '' -a $BANNER_TYPE != 'None' ]; then
                         cat ${FILE}
                     fi
                     echo ${WELCOME_TEXT}
-                '''
+                '''.stripIndent())
             }
         }
         stage('Build') {
