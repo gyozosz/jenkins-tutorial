@@ -12,7 +12,7 @@ pipeline {
 
         choice(name: 'BANNER_TYPE', choices: ["None", "Single", "Double", "Framed"], description: "Type of the banner display in the build logs")
 
-        file(name: 'banners/banner.txt', description: 'Banner to be displayed in build logs for fun')
+        base64File 'THEFILE'
     }
     stages {
         stage('Banner'){
@@ -20,6 +20,10 @@ pipeline {
                 sh'''#!/bin/bash
                     echo ${WELCOME_TEXT}
                     echo ${BANNER_TYPE}
+
+                    withFileParameter('THEFILE') {
+                      sh 'cat $THEFILE'
+                    }
 
 
                     if [ $BANNER_TYPE != '' -a $BANNER_TYPE != 'None' ]; then
