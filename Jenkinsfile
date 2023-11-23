@@ -17,8 +17,11 @@ pipeline {
     stages {
         stage('Banner'){
             steps {
-                params.each() { param, value ->
-                    print "Parameter: ${param}, Value: ${value}"
+                script{
+
+                    params.each() { param, value ->
+                        print "Parameter: ${param}, Value: ${value}"
+                    }
                 }
 
                 sh'''#!/bin/bash
