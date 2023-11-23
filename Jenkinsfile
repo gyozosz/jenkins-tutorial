@@ -17,8 +17,8 @@ pipeline {
     stages {
         stage('Banner'){
             steps {
-                withFileParameter('THEFILE') {
-                  sh 'cat $THEFILE'
+                params.each() { param, value ->
+                    print "Parameter: ${param}, Value: ${value}"
                 }
 
                 sh'''#!/bin/bash
