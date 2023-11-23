@@ -17,11 +17,8 @@ pipeline {
     stages {
         stage('Banner'){
             steps {
-                withFileParameter('FILE') {
-                    sh 'cat ${FILE}'
-                }
                 sh '''
-                    if [ ${BANNER_TYPE} != '' -a ${BANNER_TYPE} != 'None' ]; then
+                    if [ $BANNER_TYPE != '' -a $BANNER_TYPE != 'None' ]; then
                         cat ${FILE}
                     fi
                     echo ${WELCOME_TEXT}
