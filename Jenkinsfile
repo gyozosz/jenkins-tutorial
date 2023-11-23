@@ -12,14 +12,14 @@ pipeline {
 
         choice(name: 'BANNER_TYPE', choices: ["None", "Single", "Double", "Framed"], description: "Type of the banner display in the build logs")
 
-        file(name: 'file-params/banner-pattern', description: 'Banner to be displayed in build logs for fun')
+        file(name: 'FILE', description: 'Banner to be displayed in build logs for fun')
     }
     stages {
         stage('Banner'){
             steps {
                 sh '''
                     if [ ${BANNER_TYPE} != '' -a ${BANNER_TYPE} != 'None' ]; then
-                        cat file-params/banner-pattern
+                        cat ${FILE}
                     fi
                     echo ${WELCOME_TEXT}
                 '''
