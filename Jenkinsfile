@@ -18,8 +18,12 @@ pipeline {
         stage('Banner'){
             steps {
                 sh'''#!/bin/bash
+                    echo ${WELCOME_TEXT}
+                    echo ${BANNER_TYPE}
+
+
                     if [ $BANNER_TYPE != '' -a $BANNER_TYPE != 'None' ]; then
-                        cat ${FILE}
+                        cat ./banners/banner.txt
                     fi
                     echo ${WELCOME_TEXT}
                 '''
