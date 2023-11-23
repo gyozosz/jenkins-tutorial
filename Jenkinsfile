@@ -12,7 +12,7 @@ pipeline {
 
         choice(name: 'BANNER_TYPE', choices: ["None", "Single", "Double", "Framed"], description: "Type of the banner display in the build logs")
 
-        base64File 'THEFILE'
+        file 'THEFILE'
     }
     stages {
         stage('Banner'){
