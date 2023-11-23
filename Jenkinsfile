@@ -18,10 +18,10 @@ pipeline {
         stage('Banner'){
             steps {
                 sh '''
-                    if [ $BANNER_TYPE != 'None']; then
+                    if [ ${BANNER_TYPE} != 'None']; then
                         cat file-params/banner-pattern
                     fi
-                    echo $WELCOME_TEXT
+                    echo ${WELCOME_TEXT}
                 '''
             }
         }
