@@ -17,14 +17,13 @@ pipeline {
     stages {
         stage('Banner'){
             steps {
+                withFileParameter('THEFILE') {
+                  sh 'cat $THEFILE'
+                }
+
                 sh'''#!/bin/bash
                     echo ${WELCOME_TEXT}
                     echo ${BANNER_TYPE}
-
-                    withFileParameter('THEFILE') {
-                      sh 'cat $THEFILE'
-                    }
-
 
                     if [ $BANNER_TYPE != '' -a $BANNER_TYPE != 'None' ]; then
                         cat ./banners/banner.txt
